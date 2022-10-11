@@ -1,0 +1,25 @@
+This file contains some of the test cases for functions implemented so far
+Keep adding all the test cases to this file 
+Note: All the test cases must be in JSON format 
+Note: Comments are put with //, remove them from the test cases before testing
+
+Adding New Users:
+{
+    "Ye":{
+        "Property":["Not White House", "Not America"],
+        "Timestamp":"2020" //for time-being, use datetime later
+    },
+    "Trump"{
+        "Property":["Lost White House", "Lost America"],
+        "Timestamp":"2020" //for time-being, use datetime later
+    }
+}
+
+Transaction between two users, will also update the transaction history of property:
+{
+    "Buyer name":"Ye",
+    "Seller name":"Trump",
+    "Property name":"Lost White House",
+    "Property value":"1000",
+    "Timestamp":"2022"
+}
