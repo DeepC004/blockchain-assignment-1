@@ -2,24 +2,30 @@ This file contains some of the test cases for functions implemented so far
 Keep adding all the test cases to this file 
 Note: All the test cases must be in JSON format 
 Note: Comments are put with //, remove them from the test cases before testing
+Note: Users and stakers have the same input format
 
 Adding New Users:
 {
-    "Ye":{
-        "Property":["Not White House", "Not America"],
-        "Timestamp":"2020" //for time-being, use datetime later
+    "http://localhost:3004":{
+        "property":["White House", "Not America"],
+        "timestamp":"2020" 
     },
-    "Trump"{
-        "Property":["Lost White House", "Lost America"],
-        "Timestamp":"2020" //for time-being, use datetime later
+    "http://localhost:3007":{
+        "property":["Lost White House", "America"],
+        "timestamp":"2020"
     }
 }
 
 Transaction between two users, will also update the transaction history of property:
 {
-    "Buyer name":"Ye",
-    "Seller name":"Trump",
-    "Property name":"Lost White House",
-    "Property value":"1000",
-    "Timestamp":"2022"
+    "buyer":"http://localhost:3005",
+    "seller":"http://localhost:3006",
+    "property":"America",
+    "value":"1500",
+    "timestamp":"2024"
+}
+
+Ordered staker has the following structure:
+{
+    'name' : <value>,
 }
