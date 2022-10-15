@@ -7,7 +7,7 @@ Implementation of Delegated Proof of Stake(DPoS) consensus algorithm
   <li>Sravika Linga (2020A7PS1310H)</li>
 </ol>
  
-Objective 
+## Objective 
 This assignment focuses on implementing blockchain(Delegate Proof of Stake) for maintaining land records<br>
 
 <h2>Implementation</h2>
