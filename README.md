@@ -29,18 +29,25 @@ localhost:5000 acts as primary node which is responisble for adding new users an
  
  <li>/add/users</li>
   This POST route allows us to add new users(nodes) to our blockchain network
+  <img src="./images/adduser.png">
  <li> /add/transaction</li>
   This POST route allows us to add new transactions(smallest element of a block) to our blockchain network
+  <img src="./images/addtrans.png">
  <li>/history</li>
   This POST route shows us the entire transaction history related to a specific property
+  <img src="./images/history.png">
   <li>/chain</li>
   This GET route allows us to view the blockchain(all the blocks added to blockchain)
+  <img src="./images/chain.png">
   <li>/voting</li>
   This GET route initiates the voting process, it sorts the users accoring to the votes they received(stake included) and displays the votes received. Only primary node is eligible to host election
+  <img src="./images/voting.png">
   <li>/witnesses</li>
   This GET route displays the the top 3 nodes who received the maximum amount of votes, only these nodes are allowed to mine the block
+  <img src="./images/witness.png">
   <li>/mine</li>
   This GET route used for mining the block, a minimum of 2 transactions are required for witnesses(delegates) to mine a block.
+  <img src="./images/mine.png">
   
 </ol>
 
