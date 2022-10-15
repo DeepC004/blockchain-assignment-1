@@ -8,11 +8,12 @@ Implementation of Delegated Proof of Stake(DPoS) consensus algorithm
 </ol>
  
 ## Objective 
-This assignment focuses on implementing blockchain(Delegate Proof of Stake) for maintaining land records<br>
+This assignment focuses on implementing blockchain for maintaining land records. The consensus algorithm used is Delegated Proof of Stake(DPoS).<br>
 
 <h2>Implementation</h2>
 <ul>
 <li>All the methods are defined in blockchain.py and the API routes in app.py</li>
+<li>The DPoS consensus algorithm is defined in blockchain.py file.</li>
 <li>The merkle.py consists all the functions required to produce merkle root (https://github.com/Tierion/pymerkletools)</li>
 </ul>
 
