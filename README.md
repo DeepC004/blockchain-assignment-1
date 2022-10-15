@@ -16,6 +16,13 @@ This assignment focuses on implementing blockchain(Delegate Proof of Stake) for 
 <li>The merkle.py consists all the functions required to produce merkle root (https://github.com/Tierion/pymerkletools)</li>
 </ul>
 
+<h3> Methods </h3>
+<ul>
+<li>We can add nodes to the network using the /add/user API endpoint, while adding user it is required to specify the unique property's name</li>
+<li> For the voting mechanism, we are using randint function for each node and the vote(their stake) is assigned to the index generated</li>
+<li> The result function sorts and gives us the 3 eligible miners</li   >
+</ul>
+
 <h3> API endpoints </h3>
 localhost:5000 acts as primary node which is responisble for adding new users and election process<br><br>
 <ol>
