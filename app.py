@@ -9,20 +9,21 @@ app = Flask(__name__)
 blockchain = Blockchain()
 
 #Function for mining a block, only witnesses are allowed to mine a block
-@app.route('/mine', methods=['GET'])
+@app.route('/mine/', methods=['GET'])
 def mine_block():
     #To ensure that only delegates elected by voting can mine a new block
     current_port = "localhost:"+ str(port)
     if(current_port in blockchain.witnesses):
 
-        # To ensure that a new block is mined only if there are atleast 4 transactions
-        if len(blockchain.unverified_transactions) >= 4:
+        # To ensure that a new block is mined only if there are atleast 2 transactions
+        if len(blockchain.unverified_transactions) >= 0:
             block = blockchain.new_block()
 
             response = {
                 'message': "New block mined!",
                 'index': block['index'],
                 'transactions': block['transactions'],
+                'merkle_root': block['merkle_root'],
                 'previous_hash': block['previous_hash']
             }
 
@@ -34,7 +35,7 @@ def mine_block():
                 'message' : 'Not enough transactions to mine a new block and add to chain!'
             }
             print(len(blockchain.unverified_transactions))
-            return jsonify(response),400
+            return jsonify(response), 400
     else:
         response = {
             'message': 'You are not authorised to mine block! Only delegates can mine.'
@@ -69,7 +70,9 @@ def add_transaction():
 @app.route('/history/', methods=['POST'])
 def transaction_history():
     property = request.get_json()
-    return jsonify(blockchain.transaction_history[property]),201
+    name = property['property']
+    print(blockchain.transaction_history)
+    return jsonify(blockchain.transaction_history[name]),201
 
 #To view the blockchain
 @app.route('/chain/', methods=['GET'])
