@@ -2,6 +2,8 @@ import hashlib
 import json
 import random
 import string
+
+from matplotlib.colors import cnames
 from merkle import MerkleTools
 from random import randint
 from datetime import datetime
@@ -13,8 +15,7 @@ class Blockchain:
     def __init__(self):
         
         #all users who own a property
-        self.users = {'http://localhost:3005': {'property': ['White House', 'Not America'], 'timestamp': '2020'}, 'http://localhost:3006': {'property': ['Lost White House', 'America'], 'timestamp': '2020'}, 'http://localhost:3004': {'property': ['White House', 'Not America'], 'timestamp': '2020'}, 'http://localhost:3007': {'property': ['Lost White House', 'America'], 'timestamp': '2020'}}
-
+        self.users = dict()
         #to store transaction history associated with a property
         self.transaction_history = dict()
 
@@ -45,7 +46,8 @@ class Blockchain:
             'index': len(self.chain) + 1,
             'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'transactions': self.unverified_transactions,
-            'previous_hash': self.rand_hash() if previous_hash==1 else self.hash(self.last_block)
+            'previous_hash': self.rand_hash() if previous_hash==1 else self.hash(self.last_block),
+            'merkle_root': self.rand_hash() if previous_hash==1 else self.hash(self.last_block)
         }
         self.verified_transactions += self.unverified_transactions
         print(self.verified_transactions)
@@ -90,7 +92,7 @@ class Blockchain:
                 'seller' : seller,
                 'value' : value
             }]
-        print(self.transaction_history[property])
+        print(self.transaction_history)
 
     def rand_hash(self):
         N=128
@@ -106,6 +108,7 @@ class Blockchain:
     def hash(block):
         transactions = block['transactions']
         transactions.append(block['previous_hash'])
+        print(transactions)
         mt = MerkleTools()
         for transaction in transactions:
             mt.add_leaf(transaction)
@@ -114,15 +117,18 @@ class Blockchain:
 
 #look into format of stakers and x
     def vote(self):
-        for user, value in self.stakers:
-            x = len(value['property'])*(randint(0,100)%25)
-            self.orderstakers.update({user: x})
-
-        print(self.orderstakers)     
+        self.stakers = self.users
+        for user, _ in self.stakers.items():
+            self.orderstakers[user] = 0
+        for _, value in self.stakers.items():
+            candidate,_ = random.choice(list(self.stakers.items()))
+            length = len(value['property'])
+            x = length*randint(0, length)
+            self.orderstakers[candidate] += x  
 
     def result(self):
-        self.orderstakers = sorted(self.orderstakers.items(), key = lambda kv: (kv[1], kv[0]))
         print(self.orderstakers)
+        self.orderstakers = dict(sorted(self.orderstakers.items(), key = lambda kv: (kv[1], kv[0]), reverse=True))
 
         self.witnesses = dict(list(self.orderstakers.items())[0:3])
         print(self.witnesses)
