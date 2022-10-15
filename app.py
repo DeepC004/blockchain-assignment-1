@@ -16,7 +16,7 @@ def mine_block():
     if(current_port in blockchain.witnesses):
 
         # To ensure that a new block is mined only if there are atleast 2 transactions
-        if len(blockchain.unverified_transactions) >= 0:
+        if len(blockchain.unverified_transactions) >= 2:
             block = blockchain.new_block()
 
             response = {
