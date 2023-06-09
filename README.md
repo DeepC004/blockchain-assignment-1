@@ -1,5 +1,7 @@
-# BITS-F452-Assignment-1
+# BITS F452 - Blockchain Technology
+
 Implementation of Delegated Proof of Stake(DPoS) consensus algorithm
+
 ## Team Members (Group 26)
 <ol>
   <li>Deep Chordia (2020A7PS2073H) </li>
